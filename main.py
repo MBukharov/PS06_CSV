@@ -26,14 +26,18 @@ def append_parsed_data(url):
 
         parsed_data.append([name,price,link])
 
+#Функция для записи в файл
 def write_data_to_csv(parsed_data,filename):
     with open(filename,'w',encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(['Название', 'Цена', 'Ссылка'])
         writer.writerows(parsed_data)
 
+#Парсим данные с 4-х страниц сайта
 append_parsed_data(url)
 append_parsed_data(url+'/page-2')
 append_parsed_data(url+'/page-3')
 append_parsed_data(url+'/page-4')
+
+#Записываем данные в файл
 write_data_to_csv(parsed_data,'lights.csv')
